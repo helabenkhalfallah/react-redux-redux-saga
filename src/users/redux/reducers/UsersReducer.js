@@ -4,8 +4,8 @@ import AppLogger from '../../../commons/logger/AppLogger'
 
 // reducer with initial state
 const initialState = {
-  fetching: false,
-  dog: null,
+  loading: false,
+  users: null,
   error: null,
 }
 
@@ -15,25 +15,25 @@ const UsersReducer = (state = initialState, action) => {
   AppLogger.info('UsersReducer action :', action)
   let newState = state
   switch (action.type) {
-    case UserActionTypes.USER_API_CALL_REQUEST:
+    case UserActionTypes.USERS_API_CALL_REQUEST:
       newState = {
         ...state,
-        fetching: true,
+        loading: true,
         error: null,
       }
       break
-    case UserActionTypes.USER_API_CALL_SUCCESS:
+    case UserActionTypes.USERS_API_CALL_SUCCESS:
       newState = {
         ...state,
-        fetching: false,
-        dog: action.dog,
+        loading: false,
+        users: action.users,
       }
       break
-    case UserActionTypes.USER_API_CALL_FAILURE:
+    case UserActionTypes.USERS_API_CALL_FAILURE:
       newState = {
         ...state,
-        fetching: false,
-        dog: null,
+        loading: false,
+        users: null,
         error: action.error,
       }
       break

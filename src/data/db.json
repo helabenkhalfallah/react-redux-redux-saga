@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": "5ab0203de2684f18eeceb3a7",
+      "firstName": "Héla",
+      "lastName": "Ben Khalfallah",
+      "birthday": "28/09/1984",
+      "job": "Technical Manager"
+    },
+    {
+      "id": "5ab06439e2684f18eeceb3c2",
+      "firstName": "Naima",
+      "lastName": "Ben Ghalba",
+      "birthday": "20/02/1954",
+      "job": "Teacher"
+    },
+    {
+      "id": "5ac28a8de0380b0371070485",
+      "firstName": "Tarek",
+      "lastName": "Ben Khalfallah",
+      "birthday": "05/09/1980",
+      "job": "Technical Engineer"
+    }
+  ]
+}
