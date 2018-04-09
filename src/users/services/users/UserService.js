@@ -21,6 +21,7 @@ export default function* fetchUserWorker(action) {
   AppLogger.info('fetchUserWorker workerSaga : ', action)
   if (action && action.payload) {
     try {
+      // call (function, params)
       const response = yield call(fetchUser, action.payload)
       AppLogger.info('fetchUserWorker response : ', response)
 
