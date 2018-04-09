@@ -21,6 +21,7 @@ class UserListPage extends Component {
     users: PropTypes.array,
     error: PropTypes.object,
     onRequestUsers: PropTypes.func,
+    history: PropTypes.object.isRequired,
   }
 
   // initial state
@@ -38,24 +39,32 @@ class UserListPage extends Component {
     AppLogger.info('UserListPage nextProps : ', nextProps)
   }
 
+  // on user click action
+  onUserClick = (item) => {
+    if (item) {
+      AppLogger.info('UserListPage user click item : ', item)
+      // fetch user
+      this.props.history.push('/user')
+      this.props.history.push({
+        pathname: '/user',
+        search: `'?id=${item.id}'`,
+        state: { user: item },
+      })
+    }
+  }
+
+  // render
   render() {
     AppLogger.info('UserListPage props : ', this.props)
-
-    const {
-      loading,
-      users,
-      onRequestUsers,
-      error,
-    } = this.props
-    AppLogger.info('UserListPage loading : ', loading)
-    AppLogger.info('UserListPage onRequestUsers : ', onRequestUsers)
-    AppLogger.info('UserListPage error : ', error)
-    AppLogger.info('UserListPage users : ', users)
-
     return (
       <Fragment>
-        <button onClick={onRequestUsers}>Request users</button>
-        <UserList {...this.props} />
+        <button onClick={this.props.onRequestUsers}>Request users</button>
+        <UserList
+          users={this.props.users}
+          loading={this.props.loading}
+          error={this.props.error}
+          onUserClick={this.onUserClick}
+        />
       </Fragment>
     )
   }

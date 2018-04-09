@@ -7,9 +7,10 @@ import registerServiceWorker from './registerServiceWorker'
 import './index.css'
 import Routes from './routes/Routes'
 import AppLogger from './commons/logger/AppLogger'
-import UsersReducer from './users/redux/reducers/UsersReducer'
 import AppReduxStore from './commons/redux/AppReduxStore'
-import UsersService from './users/services/users/UsersService'
+import UsersReducer from './users/redux/reducers/UsersReducer'
+import UserReducer from './users/redux/reducers/UserReducer'
+import UserRootSaga from './users/services/users/UserRootSaga'
 
 // configure env vars
 dotenv.config()
@@ -19,14 +20,14 @@ AppLogger.info('REACT_APP_USERS_PATH: ', process.env.REACT_APP_USERS_PATH)
 // saga
 
 // create the saga middleware
-const reducers = [UsersReducer]
+const reducers = [UsersReducer, UserReducer]
 AppLogger.info('Start reducers : ', reducers)
 
 const { store, middleware } = AppReduxStore(reducers)
 AppLogger.info('Start store : ', store)
 
 // run the saga
-middleware.run(UsersService)
+middleware.run(UserRootSaga)
 AppLogger.info('Start middleware : ', middleware)
 
 

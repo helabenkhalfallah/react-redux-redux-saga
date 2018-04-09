@@ -4,11 +4,25 @@ import AppLogger from '../../commons/logger/AppLogger'
 import AppCoreModule from '../../core/index'
 
 // display list
-const UserList = ({ users, error, loading }) => {
+const UserList = (props) => {
   // log users props
+  AppLogger.info('UserList props : ', props)
+  const {
+    loading,
+    users,
+    onUserClick,
+    error,
+  } = props
+  AppLogger.info('UserList loading : ', loading)
   AppLogger.info('UserList users : ', users)
   AppLogger.info('UserList error : ', error)
-  AppLogger.info('UserList loading : ', loading)
+  AppLogger.info('UserList onUserClick : ', onUserClick)
+
+  // on user click
+  const onUserSelectClicked = (item) => {
+    AppLogger.info('UserList item : ', item)
+    onUserClick(item)
+  }
 
   // user list loading status
   if (loading) {
@@ -31,7 +45,9 @@ const UserList = ({ users, error, loading }) => {
       <ul >
         {users.map(item => (
           <li key={item.id}>
-            {item.firstName} {item.lastName} {item.birthday}
+            <button onClick={() => { onUserSelectClicked(item) }}>
+              {item.firstName} {item.lastName} {item.birthday}
+            </button>
           </li >
         ))
         }
@@ -42,6 +58,7 @@ const UserList = ({ users, error, loading }) => {
 
 // prop type validation
 UserList.propTypes = {
+  onUserClick: PropTypes.func,
   users: PropTypes.array,
   error: PropTypes.object,
   loading: PropTypes.bool,
@@ -49,6 +66,7 @@ UserList.propTypes = {
 
 // default prop
 UserList.defaultProps = {
+  onUserClick: null,
   users: null,
   error: null,
   loading: false,
