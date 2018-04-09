@@ -44,7 +44,6 @@ class UserListPage extends Component {
     if (item) {
       AppLogger.info('UserListPage user click item : ', item)
       // fetch user
-      this.props.history.push('/user')
       this.props.history.push({
         pathname: '/user',
         search: `'?id=${item.id}'`,
