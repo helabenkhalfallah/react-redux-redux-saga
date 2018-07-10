@@ -1,9 +1,5 @@
 # react-redux-redux-saga
-react redux redux saga
-
-Redux & Saga :
-
-Workflow :
+# Redux & Saga Workflow :
 
 1/ connect to redux :
 ```js
