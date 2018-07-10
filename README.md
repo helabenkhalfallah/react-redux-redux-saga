@@ -151,6 +151,7 @@ ReactDOM.render(
 ```
 
 **Redux saga multiple workers :**
+
 1/ create a saga root file : UserRootSaga
 ```js
 function* watchAll() {
