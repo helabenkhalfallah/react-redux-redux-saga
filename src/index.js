@@ -10,6 +10,7 @@ import AppLogger from './commons/logger/AppLogger'
 import AppReduxStore from './commons/redux/AppReduxStore'
 import UsersReducer from './users/redux/reducers/UsersReducer'
 import UserReducer from './users/redux/reducers/UserReducer'
+import UserAddReducer from './users/redux/reducers/UserAddReducer'
 import UserRootSaga from './users/services/users/UserRootSaga'
 
 // configure env vars
@@ -20,7 +21,7 @@ AppLogger.info('REACT_APP_USERS_PATH: ', process.env.REACT_APP_USERS_PATH)
 // saga
 
 // create the saga middleware
-const reducers = [UsersReducer, UserReducer]
+const reducers = [UsersReducer, UserReducer, UserAddReducer]
 AppLogger.info('Start reducers : ', reducers)
 
 const { store, middleware } = AppReduxStore(reducers)

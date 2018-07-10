@@ -20,6 +20,16 @@
       "lastName": "Ben Khalfallah",
       "birthday": "05/09/1980",
       "job": "Technical Engineer"
+    },
+    {
+      "firstName": "hela",
+      "lastName": "khalfallah",
+      "email": "hela@azerty.com",
+      "password": "azerty",
+      "password_confirmation": "azerty",
+      "birthday": "05/09/1982",
+      "job": "zzz",
+      "id": "Ia~yrxX"
     }
   ]
 }

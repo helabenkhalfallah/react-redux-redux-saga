@@ -5,7 +5,7 @@ import AppCoreModule from '../../core/index'
 
 const UserDetails = (props) => {
   // log users props
-  AppLogger.info('UserList props : ', props)
+  AppLogger.info('UserDetails props : ', props)
   const {
     loading,
     user,

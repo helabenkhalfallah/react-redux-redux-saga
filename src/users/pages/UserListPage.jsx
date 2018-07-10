@@ -31,6 +31,7 @@ class UserListPage extends Component {
 
   // did mount staff
   componentDidMount() {
+    this.props.onRequestUsers()
   }
 
   // force refetch
@@ -52,18 +53,29 @@ class UserListPage extends Component {
     }
   }
 
+  // on user add click action
+  onAddUserClick = () => {
+    AppLogger.info('UserListPage onAddUserClick')
+    this.props.history.push({
+      pathname: '/add-user',
+      search: null,
+      state: null,
+    })
+  }
+
   // render
   render() {
     AppLogger.info('UserListPage props : ', this.props)
     return (
       <Fragment>
-        <button onClick={this.props.onRequestUsers}>Request users</button>
+        <button onClick={this.props.onRequestUsers}>Reload users</button>
         <UserList
           users={this.props.users}
           loading={this.props.loading}
           error={this.props.error}
           onUserClick={this.onUserClick}
         />
+        <button onClick={this.onAddUserClick}>Add new user</button>
       </Fragment>
     )
   }
