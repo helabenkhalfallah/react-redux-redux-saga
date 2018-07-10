@@ -170,3 +170,19 @@ UsersService
 UserService
 UserAddService
 ```
+
+3/ the call is made like this (index.js) :
+```js
+// redux & saga
+// create redux reducers
+const reducers = [UsersReducer, UserReducer, UserAddReducer]
+AppLogger.info('redux reducers : ', reducers)
+
+// create redux store and saga middleware
+const { store, middleware } = AppReduxStore(reducers)
+AppLogger.info('redux store : ', store)
+
+// start saga middleware
+middleware.run(UserRootSaga)
+AppLogger.info('redux middleware : ', middleware)
+```
