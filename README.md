@@ -1,4 +1,4 @@
-# react-redux-redux-saga
+# react-redux-redux-saga-formik
 **Redux & Saga Workflow :**
 
 1/ connect to redux :
