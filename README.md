@@ -164,7 +164,7 @@ function* watchAll() {
 
 export default watchAll
 ```
-2/ create your standalone service :
+2/ create your standalone workers :
 ```js
 UsersService
 UserService
