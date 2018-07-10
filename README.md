@@ -86,3 +86,86 @@ render() {
     )
   }
 ```
+
+**Redux multiple reducers :**
+
+1/ We create a custom redux reducers that will take an array of reducers :
+```js
+const AppReduxReducers = (reducers) => { 
+  return combineReducers({
+    ...reducers,
+  })
+}
+export default AppReduxReducers
+```
+2/ the keyword is **combineReducers**.
+
+3/ the call is made like this (index.js) :
+```js
+// redux & saga
+// create redux reducers
+const reducers = [UsersReducer, UserReducer, UserAddReducer]
+AppLogger.info('redux reducers : ', reducers)
+
+// create redux store and saga middleware
+const { store, middleware } = AppReduxStore(reducers)
+AppLogger.info('redux store : ', store)
+
+// start saga middleware
+middleware.run(UserRootSaga)
+AppLogger.info('redux middleware : ', middleware)
+```
+
+4/ AppReduxStore :
+```js
+// Add the reducer to your store on the `router` key
+// Also apply our middleware for navigating
+const AppReduxStore = (reducers) => {
+  // prepare reducer and middle ware
+  const reduxReducers = AppReduxReducers(reducers)
+  const sagaMiddleware = createSagaMiddleware()
+
+  // create store
+  const reduxStore = createStore(
+    reduxReducers,
+    compose(applyMiddleware(sagaMiddleware)),
+  )
+
+  // return middleware & store
+  return {
+    store: reduxStore,
+    middleware: sagaMiddleware,
+  }
+}
+export default AppReduxStore
+```
+
+5/ render :
+```js
+ReactDOM.render(
+  <Provider store={store}>
+    <Routes />
+  </Provider>,
+  document.getElementById('root'),
+)
+```
+
+**Redux saga multiple workers :**
+1/ create a saga root file : UserRootSaga
+```js
+function* watchAll() {
+  yield all([
+    takeEvery(UserActionTypes.USERS_API_CALL_REQUEST, UsersService),
+    takeEvery(UserActionTypes.USER_API_CALL_REQUEST, UserService),
+    takeEvery(UserActionTypes.USER_ADD_API_CALL_REQUEST, UserAddService),
+  ])
+}
+
+export default watchAll
+```
+2/ create your standalone service :
+```js
+UsersService
+UserService
+UserAddService
+```

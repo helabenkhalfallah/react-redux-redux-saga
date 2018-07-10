@@ -18,18 +18,19 @@ dotenv.config()
 AppLogger.info('REACT_APP_DEBUG_ENABLE: ', process.env.REACT_APP_DEBUG_ENABLE)
 AppLogger.info('REACT_APP_USERS_PATH: ', process.env.REACT_APP_USERS_PATH)
 
-// saga
+// redux & saga
 
-// create the saga middleware
+// create redux reducers
 const reducers = [UsersReducer, UserReducer, UserAddReducer]
-AppLogger.info('Start reducers : ', reducers)
+AppLogger.info('redux reducers : ', reducers)
 
+// create redux store and saga middleware
 const { store, middleware } = AppReduxStore(reducers)
-AppLogger.info('Start store : ', store)
+AppLogger.info('redux store : ', store)
 
-// run the saga
+// start saga middleware
 middleware.run(UserRootSaga)
-AppLogger.info('Start middleware : ', middleware)
+AppLogger.info('redux middleware : ', middleware)
 
 
 // render
