@@ -3,21 +3,21 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import UserActionTypes from '../redux/actions/UserActionTypes'
 import AppLogger from '../../commons/logger/AppLogger'
-import UserAdd from '../components/UserAdd'
+import UserLogin from '../components/UserLogin'
 
-class UserAddPage extends Component {
+class UserLoginPage extends Component {
   // propsType (validation)
   static propTypes = {
     loading: PropTypes.bool,
     error: PropTypes.object,
-    onAddUser: PropTypes.func,
+    onUserLogin: PropTypes.func,
   }
 
   // default props
   static defaultProps = {
     loading: false,
     error: null,
-    onAddUser: null,
+    onUserLogin: null,
   }
 
   // initial state
@@ -33,25 +33,25 @@ class UserAddPage extends Component {
   // force refetch
   // mapStateToProps
   componentWillReceiveProps(nextProps) {
-    AppLogger.info('UserAddPage nextProps : ', nextProps)
+    AppLogger.info('UserLoginPage nextProps : ', nextProps)
   }
 
   // on user click action
-  onAddUserClick = (user) => {
-    AppLogger.info('UserAddPage user click item : ', user)
+  onUserLoginClick = (user) => {
+    AppLogger.info('UserLoginPage user click item : ', user)
     if (user) {
-      // add user
-      this.props.onAddUser(user)
+      // user login
+      this.props.onUserLogin(user)
     }
   }
 
 
   render() {
-    AppLogger.info('UserAddPage props : ', this.props)
+    AppLogger.info('UserLoginPage props : ', this.props)
     return (
       <Fragment>
-        <UserAdd
-          onAddUserClick={this.onAddUserClick}
+        <UserLogin
+          onUserLoginClick={this.onUserLoginClick}
           loading={this.props.loading}
           error={this.props.error}
         />
@@ -61,10 +61,10 @@ class UserAddPage extends Component {
 }
 
 const mapStateToProps = (state) => {
-  AppLogger.info('UserAddPage mapStateToProps state : ', state)
-  AppLogger.info('UserAddPage mapStateToProps .loading : ', state[2].loading)
-  AppLogger.info('UserAddPage mapStateToProps .user : ', state[2].user)
-  AppLogger.info('UserAddPage mapStateToProps error : ', state[2].error)
+  AppLogger.info('UserLoginPage mapStateToProps state : ', state)
+  AppLogger.info('UserLoginPage mapStateToProps .loading : ', state[2].loading)
+  AppLogger.info('UserLoginPage mapStateToProps .user : ', state[2].user)
+  AppLogger.info('UserLoginPage mapStateToProps error : ', state[2].error)
 
   return {
     loading: (state && state[2]) ? state[2].loading : false,
@@ -74,12 +74,12 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  AppLogger.info('UserAddPage mapDispatchToProps dispatch : ', dispatch)
+  AppLogger.info('UserLoginPage mapDispatchToProps dispatch : ', dispatch)
   return {
-    onAddUser: user => dispatch({ type: UserActionTypes.USER_ADD_API_CALL_REQUEST, payload: user }),
+    onUserLogin: user => dispatch({ type: UserActionTypes.USER_LOGIN_API_CALL_REQUEST, payload: user }),
   }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserAddPage)
+export default connect(mapStateToProps, mapDispatchToProps)(UserLoginPage)
 

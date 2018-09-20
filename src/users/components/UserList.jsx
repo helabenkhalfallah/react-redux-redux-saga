@@ -44,7 +44,7 @@ const UserList = (props) => {
     <Fragment>
       <ul >
         {users.map(item => (
-          <li key={item.id}>
+          <li key={item.email}>
             <button onClick={() => { onUserSelectClicked(item) }}>
               {item.firstName} {item.lastName} {item.birthday}
             </button>

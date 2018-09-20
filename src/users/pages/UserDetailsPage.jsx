@@ -6,14 +6,6 @@ import AppLogger from '../../commons/logger/AppLogger'
 import UserDetails from '../components/UserDetails'
 
 class UserDetailsPage extends Component {
-  // default props
-  static defaultProps = {
-    loading: false,
-    user: null,
-    error: null,
-    onRequestUser: null,
-  }
-
   // propsType (validation)
   static propTypes = {
     loading: PropTypes.bool,
@@ -21,6 +13,14 @@ class UserDetailsPage extends Component {
     error: PropTypes.object,
     onRequestUser: PropTypes.func,
     location: PropTypes.object.isRequired,
+  }
+
+  // default props
+  static defaultProps = {
+    loading: false,
+    user: null,
+    error: null,
+    onRequestUser: null,
   }
 
   // initial state

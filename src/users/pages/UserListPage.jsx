@@ -7,14 +7,6 @@ import UserActionTypes from '../redux/actions/UserActionTypes'
 import AppLogger from '../../commons/logger/AppLogger'
 
 class UserListPage extends Component {
-  // default props
-  static defaultProps = {
-    loading: false,
-    users: null,
-    error: null,
-    onRequestUsers: null,
-  }
-
   // propsType (validation)
   static propTypes = {
     loading: PropTypes.bool,
@@ -22,6 +14,14 @@ class UserListPage extends Component {
     error: PropTypes.object,
     onRequestUsers: PropTypes.func,
     history: PropTypes.object.isRequired,
+  }
+
+  // default props
+  static defaultProps = {
+    loading: false,
+    users: null,
+    error: null,
+    onRequestUsers: null,
   }
 
   // initial state

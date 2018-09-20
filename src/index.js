@@ -15,8 +15,6 @@ import UserRootSaga from './users/services/users/UserRootSaga'
 
 // configure env vars
 dotenv.config()
-AppLogger.info('REACT_APP_DEBUG_ENABLE: ', process.env.REACT_APP_DEBUG_ENABLE)
-AppLogger.info('REACT_APP_USERS_PATH: ', process.env.REACT_APP_USERS_PATH)
 
 // redux & saga
 

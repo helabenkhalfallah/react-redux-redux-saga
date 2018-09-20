@@ -3,6 +3,7 @@ import { call, put } from 'redux-saga/effects'
 import axios from 'axios'
 import UserActionTypes from '../../redux/actions/UserActionTypes'
 import AppLogger from '../../../commons/logger/AppLogger'
+import SessionUtils from '../../../commons/utils/SessionUtils'
 
 // function that makes the api
 // request and returns a Promise for response
@@ -11,6 +12,7 @@ function fetchUsers() {
   return axios({
     method: 'get',
     url: process.env.REACT_APP_USERS_PATH,
+    headers: { Authorization: SessionUtils.loadToken() },
   })
 }
 

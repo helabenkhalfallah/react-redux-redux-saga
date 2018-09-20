@@ -7,7 +7,7 @@ import AppLogger from '../../../commons/logger/AppLogger'
 // function that makes the api
 // request and returns a Promise for response
 function fetchUser(id) {
-  const userDetailsUrl = `${process.env.REACT_APP_USERS_PATH}?id=${id}`
+  const userDetailsUrl = `${process.env.REACT_APP_GET_USER_PATH}?id=${id}`
   AppLogger.info('fetchUser workerSaga userDetailsUrl: ', userDetailsUrl)
   return axios({
     method: 'get',

@@ -6,7 +6,7 @@ import AppLogger from '../../../commons/logger/AppLogger'
 
 // add user
 function addUser(user) {
-  const addUserUrl = `${process.env.REACT_APP_USERS_PATH}`
+  const addUserUrl = `${process.env.REACT_APP_ADD_USER_PATH}`
   AppLogger.info('addUser workerSaga addUserUrl: ', addUserUrl)
   return axios.post(addUserUrl, user)
 }
