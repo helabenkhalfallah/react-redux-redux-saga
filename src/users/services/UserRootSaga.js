@@ -1,5 +1,5 @@
 import { takeEvery, all } from 'redux-saga/effects'
-import UserActionTypes from '../../redux/actions/UserActionTypes'
+import UserActionTypes from '../redux/actions/UserActionTypes'
 import UsersService from './UsersService'
 import UserService from './UserService'
 import UserAddService from './UserAddService'

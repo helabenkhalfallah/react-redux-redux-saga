@@ -11,7 +11,7 @@ import AppReduxStore from './commons/redux/AppReduxStore'
 import UsersReducer from './users/redux/reducers/UsersReducer'
 import UserReducer from './users/redux/reducers/UserReducer'
 import UserAddReducer from './users/redux/reducers/UserAddReducer'
-import UserRootSaga from './users/services/users/UserRootSaga'
+import UserRootSaga from './users/services/UserRootSaga'
 
 // configure env vars
 dotenv.config()

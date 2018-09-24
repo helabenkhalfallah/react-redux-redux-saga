@@ -1,8 +1,8 @@
 // UserAddService.js
 import { call, put } from 'redux-saga/effects'
 import axios from 'axios'
-import UserActionTypes from '../../redux/actions/UserActionTypes'
-import AppLogger from '../../../commons/logger/AppLogger'
+import UserActionTypes from '../redux/actions/UserActionTypes'
+import AppLogger from '../../commons/logger/AppLogger'
 
 // add user
 function addUser(user) {

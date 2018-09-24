@@ -1,8 +1,8 @@
 // UserService.js
 import { call, put } from 'redux-saga/effects'
 import axios from 'axios'
-import UserActionTypes from '../../redux/actions/UserActionTypes'
-import AppLogger from '../../../commons/logger/AppLogger'
+import UserActionTypes from '../redux/actions/UserActionTypes'
+import AppLogger from '../../commons/logger/AppLogger'
 
 // function that makes the api
 // request and returns a Promise for response

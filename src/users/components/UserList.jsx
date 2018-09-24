@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react'
+import { isEmpty } from 'lodash'
 import PropTypes from 'prop-types'
 import AppLogger from '../../commons/logger/AppLogger'
 import AppCoreModule from '../../core/index'
+
 
 // display list
 const UserList = (props) => {
@@ -35,7 +37,7 @@ const UserList = (props) => {
   }
 
   // user list emtpy status
-  if (!users) {
+  if (isEmpty(users)) {
     return <AppCoreModule.EmptyPage />
   }
 

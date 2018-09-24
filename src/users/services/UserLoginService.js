@@ -1,9 +1,9 @@
 // UsersService.js
 import { call, put } from 'redux-saga/effects'
 import axios from 'axios'
-import UserActionTypes from '../../redux/actions/UserActionTypes'
-import AppLogger from '../../../commons/logger/AppLogger'
-import SessionUtils from '../../../commons/utils/SessionUtils'
+import UserActionTypes from '../redux/actions/UserActionTypes'
+import AppLogger from '../../commons/logger/AppLogger'
+import SessionUtils from '../../commons/utils/SessionUtils'
 
 // user login
 function login(email, password) {
