@@ -31,12 +31,13 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "flow-bin": "^0.93.0",
+    "jest-image-snapshot": "^2.10.0",
     "react-scripts": "1.1.1"
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
-    "start-server": "",
+    "start-server": "json-server --watch ./data/db.json",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --watchAll=false",
     "eject": "react-scripts eject",
