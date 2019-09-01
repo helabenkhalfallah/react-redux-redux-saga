@@ -1,20 +1,17 @@
 // UserAddService.js
 import { call, put } from 'redux-saga/effects'
-import axios from 'axios'
 import UserActionTypes from '../redux/actions/UserActionTypes'
 import AppLogger from '../../commons/logger/AppLogger'
+import UserApi from './UserApi'
 
-// add user
-const addUser = (user) => {
-  const addUserUrl = `${process.env.REACT_APP_ADD_USER_PATH}`
-  AppLogger.info('addUser workerSaga addUserUrl: ', addUserUrl)
-  return axios.post(addUserUrl, user)
-}
+const {
+  addUser,
+} = UserApi
 
 // worker saga: makes the api call
 // when watcher saga sees the action
 export default function* addUserWorker(action) {
-  AppLogger.info('addUserWorker workerSaga : ', action)
+  AppLogger.info('addUserWorker workerSaga action : ', action.payload)
   if (action && action.payload) {
     try {
       // call (function, params)
@@ -26,9 +23,13 @@ export default function* addUserWorker(action) {
       if (user) {
         // dispatch a success action to the store
         // with the new user
+        const {
+          id,
+          ...others
+        } = user
         yield put({
           type: UserActionTypes.USER_ADD_API_CALL_SUCCESS,
-          user,
+          user: others,
         })
       } else {
         const error = new Error('An error occured when add user')
