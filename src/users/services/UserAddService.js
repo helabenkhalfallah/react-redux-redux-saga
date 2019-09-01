@@ -5,7 +5,7 @@ import UserActionTypes from '../redux/actions/UserActionTypes'
 import AppLogger from '../../commons/logger/AppLogger'
 
 // add user
-function addUser(user) {
+const addUser = (user) => {
   const addUserUrl = `${process.env.REACT_APP_ADD_USER_PATH}`
   AppLogger.info('addUser workerSaga addUserUrl: ', addUserUrl)
   return axios.post(addUserUrl, user)
@@ -26,18 +26,30 @@ export default function* addUserWorker(action) {
       if (user) {
         // dispatch a success action to the store
         // with the new user
-        yield put({ type: UserActionTypes.USER_ADD_API_CALL_SUCCESS, user })
+        yield put({
+          type: UserActionTypes.USER_ADD_API_CALL_SUCCESS,
+          user,
+        })
       } else {
         const error = new Error('An error occured when add user')
-        yield put({ type: UserActionTypes.USER_ADD_API_CALL_FAILURE, error })
+        yield put({
+          type: UserActionTypes.USER_ADD_API_CALL_FAILURE,
+          error,
+        })
       }
     } catch (error) {
       // dispatch a failure action to the store with the error
       AppLogger.info('addUserWorker error : ', error)
-      yield put({ type: UserActionTypes.USER_ADD_API_CALL_FAILURE, error })
+      yield put({
+        type: UserActionTypes.USER_ADD_API_CALL_FAILURE,
+        error,
+      })
     }
   } else {
     const error = new Error('An error occured when add user')
-    yield put({ type: UserActionTypes.USER_ADD_CALL_FAILURE, error })
+    yield put({
+      type: UserActionTypes.USER_ADD_CALL_FAILURE,
+      error,
+    })
   }
 }

@@ -19,7 +19,12 @@ dotenv.config()
 // redux & saga
 
 // create redux reducers
-const reducers = [UsersReducer, UserReducer, UserAddReducer]
+const reducers =
+{
+  users: UsersReducer,
+  user: UserReducer,
+  userAdd: UserAddReducer,
+}
 AppLogger.info('redux reducers : ', reducers)
 
 // create redux store and saga middleware

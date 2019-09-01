@@ -30,30 +30,30 @@ class UserLoginPage extends Component {
 
   }
 
-  // force refetch
-  // mapStateToProps
-  componentWillReceiveProps(nextProps) {
-    AppLogger.info('UserLoginPage nextProps : ', nextProps)
-  }
-
   // on user click action
   onUserLoginClick = (user) => {
     AppLogger.info('UserLoginPage user click item : ', user)
     if (user) {
       // user login
-      this.props.onUserLogin(user)
+      const {
+        onUserLogin,
+      } = this.props
+      onUserLogin(user)
     }
   }
 
-
   render() {
     AppLogger.info('UserLoginPage props : ', this.props)
+    const {
+      loading,
+      error,
+    } = this.props
     return (
       <Fragment>
         <UserLogin
           onUserLoginClick={this.onUserLoginClick}
-          loading={this.props.loading}
-          error={this.props.error}
+          loading={loading}
+          error={error}
         />
       </Fragment>
     )

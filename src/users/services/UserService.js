@@ -6,7 +6,7 @@ import AppLogger from '../../commons/logger/AppLogger'
 
 // function that makes the api
 // request and returns a Promise for response
-function fetchUser(id) {
+const fetchUser = (id) => {
   const userDetailsUrl = `${process.env.REACT_APP_GET_USER_PATH}?id=${id}`
   AppLogger.info('fetchUser workerSaga userDetailsUrl: ', userDetailsUrl)
   return axios({
@@ -31,19 +31,31 @@ export default function* fetchUserWorker(action) {
         // dispatch a success action to the store
         // with the new users
         const user = users[0]
-        yield put({ type: UserActionTypes.USER_API_CALL_SUCCESS, user })
+        yield put({
+          type: UserActionTypes.USER_API_CALL_SUCCESS,
+          user,
+        })
       } else {
         const error = new Error('User not found')
-        yield put({ type: UserActionTypes.USER_API_CALL_FAILURE, error })
+        yield put({
+          type: UserActionTypes.USER_API_CALL_FAILURE,
+          error,
+        })
       }
     } catch (error) {
       // dispatch a failure action to the store with the error
       AppLogger.info('fetchUserWorker error : ', error)
-      yield put({ type: UserActionTypes.USER_API_CALL_FAILURE, error })
+      yield put({
+        type: UserActionTypes.USER_API_CALL_FAILURE,
+        error,
+      })
     }
   } else {
     const error = new Error('User not found')
-    yield put({ type: UserActionTypes.USER_API_CALL_FAILURE, error })
+    yield put({
+      type: UserActionTypes.USER_API_CALL_FAILURE,
+      error,
+    })
   }
 }
 

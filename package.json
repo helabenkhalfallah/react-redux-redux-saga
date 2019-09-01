@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "complexity-report": "^2.0.0-alpha",
     "debug": "^3.1.0",
     "dotenv": "^5.0.1",
     "formik": "^0.11.11",
@@ -19,7 +20,7 @@
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0",
     "styled-components": "^3.3.3",
-    "yup": "^0.25.1"
+    "yup": "^0.26.10"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
@@ -28,12 +29,19 @@
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
+    "flow-bin": "^0.93.0",
     "react-scripts": "1.1.1"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
+    "start-server": "",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "flow-build": "flow-remove-types ./src/ -- -d ./lib/",
+    "flow-init": "flow init",
+    "flow": "flow",
+    "cr": "./node_modules/.bin/cr"
   }
 }

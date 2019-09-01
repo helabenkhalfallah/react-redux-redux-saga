@@ -30,30 +30,30 @@ class UserAddPage extends Component {
 
   }
 
-  // force refetch
-  // mapStateToProps
-  componentWillReceiveProps(nextProps) {
-    AppLogger.info('UserAddPage nextProps : ', nextProps)
-  }
-
   // on user click action
   onAddUserClick = (user) => {
     AppLogger.info('UserAddPage user click item : ', user)
     if (user) {
       // add user
-      this.props.onAddUser(user)
+      const {
+        onAddUser,
+      } = this.props
+      onAddUser(user)
     }
   }
 
-
   render() {
     AppLogger.info('UserAddPage props : ', this.props)
+    const {
+      loading,
+      error,
+    } = this.props
     return (
       <Fragment>
         <UserAdd
           onAddUserClick={this.onAddUserClick}
-          loading={this.props.loading}
-          error={this.props.error}
+          loading={loading}
+          error={error}
         />
       </Fragment>
     )
@@ -62,14 +62,13 @@ class UserAddPage extends Component {
 
 const mapStateToProps = (state) => {
   AppLogger.info('UserAddPage mapStateToProps state : ', state)
-  AppLogger.info('UserAddPage mapStateToProps .loading : ', state[2].loading)
-  AppLogger.info('UserAddPage mapStateToProps .user : ', state[2].user)
-  AppLogger.info('UserAddPage mapStateToProps error : ', state[2].error)
-
+  const {
+    userAdd,
+  } = state || {}
   return {
-    loading: (state && state[2]) ? state[2].loading : false,
-    user: (state && state[2]) ? state[2].user : null,
-    error: (state && state[2]) ? state[2].error : null,
+    loading: userAdd.loading,
+    user: userAdd.user,
+    error: userAdd.error,
   }
 }
 
@@ -79,7 +78,6 @@ const mapDispatchToProps = (dispatch) => {
     onAddUser: user => dispatch({ type: UserActionTypes.USER_ADD_API_CALL_REQUEST, payload: user }),
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserAddPage)
 

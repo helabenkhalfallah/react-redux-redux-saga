@@ -30,6 +30,16 @@
       "birthday": "05/09/1982",
       "job": "zzz",
       "id": "Ia~yrxX"
+    },
+    {
+      "firstName": "simon",
+      "lastName": "manuel",
+      "email": "simon.manuel@yahoo.fr",
+      "password": "azerty",
+      "password_confirmation": "azerty",
+      "birthday": "2019-09-12",
+      "job": "vvvv",
+      "id": "X72A_pz"
     }
   ]
 }

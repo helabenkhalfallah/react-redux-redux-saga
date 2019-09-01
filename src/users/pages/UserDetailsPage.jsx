@@ -31,26 +31,30 @@ class UserDetailsPage extends Component {
   // did mount staff
   componentDidMount() {
     AppLogger.info('UserDetailsPage componentDidMount')
-    AppLogger.info('UserDetailsPage props : ', this.props.location)
-    if (this.props.location.state.user) {
-      this.props.onRequestUser(this.props.location.state.user.id)
+    AppLogger.info('UserDetailsPage location : ', this.props.location)
+    const {
+      location,
+      onRequestUser,
+    } = this.props
+    if (location && location.search) {
+      const search = location.search.split('?id=')[1]
+      onRequestUser(search)
     }
-  }
-
-  // force refetch
-  // mapStateToProps
-  componentWillReceiveProps(nextProps) {
-    AppLogger.info('UserDetailsPage nextProps : ', nextProps)
   }
 
   render() {
     AppLogger.info('UserDetailsPage props : ', this.props)
+    const {
+      user,
+      loading,
+      error,
+    } = this.props
     return (
       <Fragment>
         <UserDetails
-          user={this.props.user}
-          loading={this.props.loading}
-          error={this.props.error}
+          user={user}
+          loading={loading}
+          error={error}
         />
       </Fragment>
     )
@@ -59,24 +63,25 @@ class UserDetailsPage extends Component {
 
 const mapStateToProps = (state) => {
   AppLogger.info('UserDetailsPage mapStateToProps state : ', state)
-  AppLogger.info('UserDetailsPage mapStateToProps .loading : ', state[1].loading)
-  AppLogger.info('UserDetailsPage mapStateToProps .user : ', state[1].user)
-  AppLogger.info('UserDetailsPage mapStateToProps error : ', state[1].error)
-
+  const {
+    user,
+  } = state || {}
   return {
-    loading: (state && state[1]) ? state[1].loading : false,
-    user: (state && state[1]) ? state[1].user : null,
-    error: (state && state[1]) ? state[1].error : null,
+    loading: user.loading,
+    user: user.user,
+    error: user.error,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   AppLogger.info('UserDetailsPage mapDispatchToProps dispatch : ', dispatch)
   return {
-    onRequestUser: id => dispatch({ type: UserActionTypes.USER_API_CALL_REQUEST, payload: id }),
+    onRequestUser: id => dispatch({
+      type: UserActionTypes.USER_API_CALL_REQUEST,
+      payload: id,
+    }),
   }
 }
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserDetailsPage)
-

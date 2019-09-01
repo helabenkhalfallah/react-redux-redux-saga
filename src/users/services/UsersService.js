@@ -7,9 +7,9 @@ import SessionUtils from '../../commons/utils/SessionUtils'
 
 // function that makes the api
 // request and returns a Promise for response
-function fetchUsers() {
+const fetchUsers = () => {
   AppLogger.info('fetchUsers workerSaga')
-  const url = process.env.REACT_APP_USERS_PATH
+  const url = `${process.env.REACT_APP_USERS_PATH}`
   const headers = { Authorization: SessionUtils.loadToken() }
   return axios({
     method: 'get',
@@ -28,12 +28,14 @@ export default function* fetchUsersWorker() {
 
     const { data } = response
     AppLogger.info('fetchUsersWorker data : ', data)
-    if (data && data.users) {
+    if (data) {
       // dispatch a success action to the store
       // with the new users
-      const { users } = data
-      AppLogger.info('fetchUsersWorker users : ', users)
-      yield put({ type: UserActionTypes.USERS_API_CALL_SUCCESS, users })
+      AppLogger.info('fetchUsersWorker users : ', data)
+      yield put({
+        type: UserActionTypes.USERS_API_CALL_SUCCESS,
+        users: data,
+      })
     } else {
       yield put({
         type: UserActionTypes.USERS_API_CALL_FAILURE,
@@ -43,6 +45,9 @@ export default function* fetchUsersWorker() {
   } catch (error) {
     // dispatch a failure action to the store with the error
     AppLogger.info('fetchUsersWorker error : ', error)
-    yield put({ type: UserActionTypes.USERS_API_CALL_FAILURE, error })
+    yield put({
+      type: UserActionTypes.USERS_API_CALL_FAILURE,
+      error,
+    })
   }
 }
