@@ -83,6 +83,26 @@
       "birthday": "05/09/1982",
       "job": "test",
       "id": "Ippxs0G"
+    },
+    {
+      "firstName": "testFirstName",
+      "lastName": "testLastName",
+      "email": "test@azerty.com",
+      "password": "test",
+      "password_confirmation": "test",
+      "birthday": "05/09/1982",
+      "job": "test",
+      "id": "43QjeY3"
+    },
+    {
+      "firstName": "testFirstName",
+      "lastName": "testLastName",
+      "email": "test@azerty.com",
+      "password": "test",
+      "password_confirmation": "test",
+      "birthday": "05/09/1982",
+      "job": "test",
+      "id": "Ar6aS17"
     }
   ]
 }

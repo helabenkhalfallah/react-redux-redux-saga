@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import UserActionTypes from '../redux/actions/UserActionTypes'
 import AppLogger from '../../commons/logger/AppLogger'
-import UserAdd from '../components/UserAdd'
+import { UserAdd } from '../components'
 
 class UserAddPage extends Component {
   // propsType (validation)

@@ -37,7 +37,7 @@
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
-    "start-server": "json-server --watch ./data/db.json",
+    "start-server": "json-server --watch ./src/data/db.json",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --watchAll=false",
     "eject": "react-scripts eject",
