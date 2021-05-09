@@ -9,7 +9,7 @@
     "dotenv": "^5.0.1",
     "formik": "^1.5.8",
     "history": "^4.9.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "prop-types": "^15.6.1",
     "react": "^16.9.0",
     "react-cookies": "^0.1.1",
